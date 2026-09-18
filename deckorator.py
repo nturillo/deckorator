@@ -110,9 +110,9 @@ def main():
     card_back_sheet = Image.new("RGB", (page_w, page_h), "white")
     back_img = Image.open("card_backs/" + CARD_BACK)
     back_img = back_img.resize((card_w, card_h), Image.LANCZOS)
-    back_img = back_img.transpose(Image.Transpose.ROTATE_180)
+    #back_img = back_img.transpose(Image.Transpose.ROTATE_180)
     if LAYOUT == "landscape":
-        back_img = back_img.transpose(Image.Transpose.ROTATE_90)
+        back_img = back_img.transpose(Image.Transpose.ROTATE_270)
     for r in range(rows):
         y = r * row_h + buffer_h
         for c in range(cols):
@@ -147,9 +147,9 @@ def main():
                 if files[i] in double_sided:
                     back_img = Image.open(os.path.join(folder, files[i][:-4] + "_back.jpg"))
                     back_img = back_img.resize((card_w, card_h), Image.LANCZOS)
-                    back_img = back_img.transpose(Image.Transpose.ROTATE_180)
+                    #back_img = back_img.transpose(Image.Transpose.ROTATE_180)
                     if LAYOUT == "landscape":
-                        back_img = back_img.transpose(Image.Transpose.ROTATE_90)
+                        back_img = back_img.transpose(Image.Transpose.ROTATE_270)
                     back_sheet.paste(back_img, ((cols - 1 - c) * col_w + buffer_w, y))
                 i += 1
 
